@@ -2,13 +2,18 @@
   justify-content: flex-end !important;
 }
 
-@media screen and (max-height: 499px) {
-  .mobMenu-container {
-    padding: 20px 20px 35px;
-  }
+.mobMenu-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 100vh;
+  width: 274px;
+  background-color: #ecd979;
+  padding: 20px 20px 35px;
 }
 
-@media screen and (min-height: 500px) and (max-width: 767px) {
+@media screen and (min-height: 500px) and (max-width: 768px) {
   .mobMenu-container {
     background-image: url(../img/mobile/Header/menu-elements-mob-1x.png);
     background-repeat: no-repeat;
@@ -32,16 +37,6 @@
       background-image: url(../img/mobile/Header/menu-elements-mob-3x.png);
     }
   }
-}
-
-.mobMenu-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  height: 100vh;
-  width: 274px;
-  background-color: #ecd979;
 }
 
 .mobMenu-button-close {
@@ -112,7 +107,13 @@
     padding: 20px 32px;
   }
 
-  @media screen and (min-height: 530px) and (max-height: 624px) {
+  @media screen and (max-height: 560px) {
+    .mobMenu-container {
+      /* padding: 20px 32px; */
+    }
+  }
+
+  @media screen and (min-height: 560px) and (max-height: 625px) {
     .mobMenu-container {
       padding: 20px 32px 250px;
       background-image: url(../img/tablet/Header/menu-elements-tab-1x.png);
