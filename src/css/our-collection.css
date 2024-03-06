@@ -75,10 +75,6 @@
     overflow: hidden;
 }
 
-/* 
-.collection-desc {
-    display: none;
-} */
 @media screen and (min-width: 768px) {
     .collection-section {
         background-image: url(../img/tablet/Collection/collection-elements-tab1x.png);

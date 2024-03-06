@@ -4,6 +4,7 @@ import lightboxIcons from '../img/icons.svg';
 
 const navigationElem = document.querySelector('.header-nav');
 const addressElem = document.querySelector('.header-address');
+
 const mobMenuBtnOpen = document.querySelector('.open-menu-btn');
 
 const mobMenuMarkup = `<div class="mobMenu-container">
