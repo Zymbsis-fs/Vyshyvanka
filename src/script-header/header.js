@@ -4,7 +4,6 @@ import lightboxIcons from '../img/icons.svg';
 
 const navigationElem = document.querySelector('.header-nav');
 const addressElem = document.querySelector('.header-address');
-
 const mobMenuBtnOpen = document.querySelector('.open-menu-btn');
 
 const mobMenuMarkup = `<div class="mobMenu-container">
@@ -22,10 +21,36 @@ const mobMenuMarkup = `<div class="mobMenu-container">
 
 const mobMenuInstance = basicLightbox.create(mobMenuMarkup, {
   className: 'mobMenu-lightbox',
+  onClose: i => document.body.classList.remove('scroll-ban'),
 });
+
+const refsMobMenu = {
+  closeButton: mobMenuInstance.element().querySelector('.mobMenu-button-close'),
+  navList: mobMenuInstance.element().querySelector('.header-nav-list'),
+};
+
 mobMenuBtnOpen.addEventListener('click', () =>
-  mobMenuInstance.show(i => {
-    const mobMenuBtnClose = i.element().querySelector('.mobMenu-button-close');
-    mobMenuBtnClose.addEventListener('click', () => i.close());
-  })
+  mobMenuInstance.show(showMobMenu)
 );
+
+function closeMobMenu() {
+  mobMenuInstance.close();
+}
+
+function showMobMenu() {
+  document.body.classList.add('scroll-ban');
+  refsMobMenu.closeButton.addEventListener('click', closeMobMenu);
+  refsMobMenu.navList.addEventListener('click', onLinkClick);
+}
+
+function onLinkClick(e) {
+  if (e.target === e.currentTarget) return;
+  e.preventDefault();
+  const scrollTarget = document.querySelector(
+    e.target.getAttribute('href')
+      ? e.target.getAttribute('href')
+      : e.target.firstElementChild.getAttribute('href')
+  );
+  scrollTarget.scrollIntoView({ behavior: 'smooth' });
+  closeMobMenu();
+}
