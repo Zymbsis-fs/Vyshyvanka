@@ -44,13 +44,17 @@ function showMobMenu() {
 }
 
 function onLinkClick(e) {
-  if (e.target === e.currentTarget) return;
-  e.preventDefault();
+  !(e.target === e.currentTarget) && e.preventDefault();
   const scrollTarget = document.querySelector(
     e.target.getAttribute('href')
       ? e.target.getAttribute('href')
       : e.target.firstElementChild.getAttribute('href')
   );
-  scrollTarget.scrollIntoView({ behavior: 'smooth' });
+
+  const valueForScroll =
+    Math.round(scrollTarget.getBoundingClientRect().top) -
+    (scrollTarget.id === 'order' ? 80 : 60);
+
+  window.scrollBy({ top: valueForScroll, behavior: 'smooth' });
   closeMobMenu();
 }
