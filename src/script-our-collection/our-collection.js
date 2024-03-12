@@ -63,10 +63,18 @@ function onShowLightbox(i, e) {
     document.body.classList.remove('scrollBan');
     window.removeEventListener('resize', resizeWindow);
   });
-  lightboxRefs.orderLink.addEventListener('click', () => {
+
+  lightboxRefs.orderLink.addEventListener('click', e => {
     i.close();
+    e.preventDefault();
     document.body.classList.remove('scrollBan');
     window.removeEventListener('resize', resizeWindow);
+    const orderSection = document.querySelector('.order-title');
+
+    window.scrollBy({
+      top: Math.round(orderSection.getBoundingClientRect().top - 100),
+      behavior: 'smooth',
+    });
   });
 }
 
